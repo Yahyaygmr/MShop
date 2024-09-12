@@ -4,7 +4,7 @@ using MShop.Catalog.Dtos.ProductDetailDtos;
 using MShop.Catalog.Entities;
 using MShop.Catalog.Settings;
 
-namespace MShop.Catalog.Services.ProductDetailDetailServices
+namespace MShop.Catalog.Services.ProductDetailServices
 {
     public class ProductDetailService : IProductDetailService
     {

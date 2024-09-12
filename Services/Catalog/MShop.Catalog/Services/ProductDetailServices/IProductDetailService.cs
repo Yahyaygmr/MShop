@@ -1,6 +1,6 @@
 ﻿using MShop.Catalog.Dtos.ProductDetailDtos;
 
-namespace MShop.Catalog.Services.ProductDetailDetailServices
+namespace MShop.Catalog.Services.ProductDetailServices
 {
     public interface IProductDetailService
     {
