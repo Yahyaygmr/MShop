@@ -9,31 +9,31 @@ namespace MShop.Catalog.Services.ProductImageServices
     public class ProductImageService : IProductImageService
     {
         private readonly IMapper _mapper;
-        private readonly IMongoCollection<ProductImage> _productCollection;
+        private readonly IMongoCollection<ProductImage> _productImageCollection;
 
         public ProductImageService(IMapper mapper, IDatabaseSettings databaseSettings)
         {
             _mapper = mapper;
             var client = new MongoClient(databaseSettings.ConnectionString);
             var database = client.GetDatabase(databaseSettings.DatabaseName);
-            _productCollection = database.GetCollection<ProductImage>(databaseSettings.ProducCollectionName);
+            _productImageCollection = database.GetCollection<ProductImage>(databaseSettings.ProducImageCollectionName);
         }
 
         public async Task CreateProductImageAsync(CreateProductImageDto createProductImageDto)
         {
             ProductImage? result = _mapper.Map<ProductImage>(createProductImageDto);
 
-            await _productCollection.InsertOneAsync(result);
+            await _productImageCollection.InsertOneAsync(result);
         }
 
         public async Task DeleteProductImageAsync(string id)
         {
-            await _productCollection.DeleteOneAsync(x => x.ProductImageId == id);
+            await _productImageCollection.DeleteOneAsync(x => x.ProductImageId == id);
         }
 
         public async Task<List<ResultProductImageDto>> GetAllProductImageAsync()
         {
-            List<ProductImage>? products = await _productCollection
+            List<ProductImage>? products = await _productImageCollection
                 .Find(x => true)
                 .ToListAsync();
             List<ResultProductImageDto> result = _mapper.Map<List<ResultProductImageDto>>(products);
@@ -42,7 +42,7 @@ namespace MShop.Catalog.Services.ProductImageServices
 
         public async Task<GetByIdProductImageDto> GetByIdProductImageAsync(string id)
         {
-            ProductImage? product = await _productCollection
+            ProductImage? product = await _productImageCollection
                 .Find(x => x.ProductImageId == id)
                 .FirstOrDefaultAsync();
             GetByIdProductImageDto result = _mapper.Map<GetByIdProductImageDto>(product);
@@ -53,7 +53,7 @@ namespace MShop.Catalog.Services.ProductImageServices
         {
             ProductImage? result = _mapper.Map<ProductImage>(updateProductImageDto);
 
-            await _productCollection
+            await _productImageCollection
                 .FindOneAndReplaceAsync(x =>
                 x.ProductImageId == updateProductImageDto.ProductImageId,
                 result);
