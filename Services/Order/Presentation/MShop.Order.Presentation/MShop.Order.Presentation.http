@@ -1,0 +1,6 @@
+@MShop.Order.Presentation_HostAddress = http://localhost:5280
+
+GET {{MShop.Order.Presentation_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
