@@ -23,7 +23,7 @@ namespace MShop.Order.Application.Features.CQRS.Handlers.AddressHandlers.Read
             var values = await _repository.GetByIdAsync(query.Id);
             return new GetAddressByIdQueryResult()
             {
-                AdressId = values.AdressId,
+                AdressId = values.AddressId,
                 City = values.City,
                 Detail = values.Detail,
                 District = values.District,

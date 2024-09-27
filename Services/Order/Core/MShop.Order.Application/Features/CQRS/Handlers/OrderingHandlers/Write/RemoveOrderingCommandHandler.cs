@@ -17,7 +17,7 @@ namespace MShop.Order.Application.Features.CQRS.Handlers.OrderingHandlers.Write
         {
             _repository = repository;
         }
-        public async Task Handler(RemoveOrderingCommand command)
+        public async Task Handle(RemoveOrderingCommand command)
         {
             var value = await _repository.GetByIdAsync(command.Id);
             await _repository.DeleteAsync(value);

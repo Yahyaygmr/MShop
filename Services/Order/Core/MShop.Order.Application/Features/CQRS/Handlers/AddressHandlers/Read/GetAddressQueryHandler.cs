@@ -23,7 +23,7 @@ namespace MShop.Order.Application.Features.CQRS.Handlers.AddressHandlers.Read
 
             return values.Select(x => new GetAddressQueryResult
             {
-                AdressId = x.AdressId,
+                AdressId = x.AddressId,
                 City = x.City,
                 Detail = x.Detail,
                 District = x.District,
