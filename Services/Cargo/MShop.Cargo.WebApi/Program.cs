@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using MShop.Cargo.BusinessLayer.Abstract;
 using MShop.Cargo.BusinessLayer.Concrete;
 using MShop.Cargo.DataAccessLayer.Abstract;
@@ -10,6 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(opt =>
+    {
+        opt.Authority = builder.Configuration["IdentityServerUrl"];
+        opt.RequireHttpsMetadata = false;
+        opt.Audience = "ResourceCargo";
+    });
 builder.Services.AddDbContext<CargoContext>();
 builder.Services.AddScoped(typeof(IGenericDal<>), typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericManager<>));
@@ -36,7 +44,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
