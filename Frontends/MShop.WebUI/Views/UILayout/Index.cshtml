@@ -1,0 +1,37 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @await Component.InvokeAsync("UILayoutHeadComponentPartial")
+   
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    @await Component.InvokeAsync("UILayoutTopbarComponentPartial")
+   
+  
+    <!-- Topbar End -->
+    <!-- Navbar Start -->
+    @await Component.InvokeAsync("UILayoutNavbarComponentPartial")
+   
+    <!-- Navbar End -->
+    @RenderBody()
+    <!-- Footer Start -->
+    @await Component.InvokeAsync("UILayoutFooterComponentPartial")
+ 
+    <!-- Footer End -->
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    @await Component.InvokeAsync("UILayoutScriptsComponentPartial")
+   
+</body>
+
+</html>
