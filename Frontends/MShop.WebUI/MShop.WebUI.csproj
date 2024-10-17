@@ -16,4 +16,8 @@
     <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MShop.DtoLayer\MShop.DtoLayer.csproj" />
+  </ItemGroup>
+
 </Project>
