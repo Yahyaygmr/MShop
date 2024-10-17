@@ -7,7 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\admintemp\app\et-line-font\fonts\.DS_Store" />
+    <None Include="wwwroot\admintemp\charts\et-line-font\fonts\.DS_Store" />
+    <None Include="wwwroot\admintemp\component\et-line-font\fonts\.DS_Store" />
+    <None Include="wwwroot\admintemp\dist\et-line-font\fonts\.DS_Store" />
+    <None Include="wwwroot\admintemp\forms\et-line-font\fonts\.DS_Store" />
+    <None Include="wwwroot\admintemp\maps\et-line-font\fonts\.DS_Store" />
+    <None Include="wwwroot\admintemp\pages\et-line-font\fonts\.DS_Store" />
+    <None Include="wwwroot\admintemp\tables\et-line-font\fonts\.DS_Store" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\" />
   </ItemGroup>
 
 </Project>
