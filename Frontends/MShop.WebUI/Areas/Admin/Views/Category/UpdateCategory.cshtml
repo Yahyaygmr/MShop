@@ -1,20 +1,22 @@
-﻿@model CreateCategoryDto
+﻿@model UpdateCategoryDto
+
 @{
-    ViewData["Title"] = "CreateCategory";
+    ViewData["Title"] = "UpdateCategory";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Yeni Kategori Oluştur</h4>
-            <p class="card-description"> Lütfen oluşturmak istediğiniz kategori adını giriniz </p>
+            <h4 class="card-title">Kategori Güncelle</h4>
+            <p class="card-description"> Lütfen güncellemek istediğiniz kategori adını giriniz </p>
             <form class="forms-sample" method="post">
+                <input type="hidden" asp-for="CategoryId" />
                 <div class="form-group">
                     <label for="exampleInputName1">Kategori Adı</label>
                     <input type="text" class="form-control" placeholder="Kategori adı" asp-for="CategoryName">
                 </div>
-                <button  class="btn btn-primary text-white btn-lg me-2">Kaydet</button>
+                <button class="btn btn-primary text-white btn-lg me-2">Kaydet</button>
                 <a href="/Admin/Category/Index/" class="btn btn-light btn-lg">Kategori Listesine Dön</a>
             </form>
         </div>
