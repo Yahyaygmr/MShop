@@ -1,0 +1,26 @@
+﻿@model UpdateProductDto
+@{
+    ViewData["Title"] = "UpdateProduct";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Ürün Güncelle</h4>
+            <p class="card-description"> Lütfen güncellemek istediğiniz ürün bilgilerini eksiksik olarak  giriniz </p>
+            <form class="forms-sample" method="post">
+                <input type="hidden" asp-for="ProductId" />
+                <div class="form-group">
+                    <label for="exampleInputName1">Ürün Adı</label>
+                    <input type="text" class="form-control" placeholder="Ürün adı" asp-for="ProductName">
+                </div>
+                <button class="btn btn-primary text-white btn-lg me-2">Güncelle</button>
+                <a href="/Admin/Product/Index/" class="btn btn-light btn-lg">Ürün Listesine Dön</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
