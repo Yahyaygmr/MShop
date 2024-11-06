@@ -6,7 +6,7 @@ using MShop.Catalog.Services.ProductServices;
 
 namespace MShop.Catalog.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
