@@ -1,0 +1,54 @@
+﻿@model List<ResultFeatureSliderDto>
+
+@{
+    ViewData["Title"] = "Kategoriler";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Öneçıkan Slider</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Resim</th>
+                        <th>Başlık</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td><img src=" @item.ImageUrl" style="width:50px;height:50px;"/></td>
+                            <td>@item.Title</td>
+                            <td>@item.Status</td>
+                            <td>
+                                <a href="/Admin/FeatureSlider/DeleteFeatureSlider/@item.FeatureSliderId" class="btn btn-danger">Sil</a>
+                                <a href="/Admin/FeatureSlider/UpdateFeatureSlider/@item.FeatureSliderId" class="btn btn-dark text-white">Güncelle</a>
+                                @if(item.Status)
+                                {
+                                    <a href="/Admin/FeatureSlider/ChangeFeatureSliderStatus/@item.FeatureSliderId" class="btn btn-warning text-white">Pasif Yap</a>
+                                }
+                                else
+                                {
+                                     <a href="/Admin/FeatureSlider/ChangeFeatureSliderStatus/@item.FeatureSliderId" class="btn btn-primary text-white">Aktif Yap</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer bg-white">
+        <a href="/Admin/FeatureSlider/CreateFeatureSlider/" class="btn btn-primary btn-lg text-white">+ Yeni Öneçıkan Slider Oluştur</a>
+    </div>
+</div>
