@@ -1,4 +1,4 @@
-﻿@model List<ResultProductDto>
+﻿@model List<ResultProductWithCategoryDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -14,7 +14,8 @@
                     <tr>
                         <th>#</th>
                         <th>Ürün Adı</th>
-                        <th>Id</th>
+                        <th>Ürün Fiyatı</th>
+                        <th>Kategori</th>
                         <th>İşlemler</th>
 
                     </tr>
@@ -26,7 +27,8 @@
                         <tr>
                             <td>@count</td>
                             <td>@item.ProductName</td>
-                            <td>@item.CategoryId</td>
+                            <td>@item.Price</td>
+                            <td>@item.CategoryName</td>
                             <td>
                                 <a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a>
                                 <a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-dark text-white">Güncelle</a>

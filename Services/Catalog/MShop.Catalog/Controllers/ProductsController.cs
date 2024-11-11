@@ -23,10 +23,22 @@ namespace MShop.Catalog.Controllers
             var values = await _productService.GetAllProductAsync();
             return Ok(values);
         }
+        [HttpGet("ProductListWithCategory")]
+        public async Task<IActionResult> ProductListWithCategory()
+        {
+            var values = await _productService.GetAllProductsWithCategoryAsync();
+            return Ok(values);
+        }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductById(string id)
         {
             var value = await _productService.GetByIdProductAsync(id);
+            return Ok(value);
+        }
+        [HttpGet("GetProductWithCategoryById/{id}")]
+        public async Task<IActionResult> GetProductWithCategoryById(string id)
+        {
+            var value = await _productService.GetByIdProductWithCategoryAsync(id);
             return Ok(value);
         }
         [HttpPost]
