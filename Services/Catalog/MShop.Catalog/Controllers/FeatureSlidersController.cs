@@ -21,6 +21,12 @@ namespace MShop.Catalog.Controllers
             var values = await _featureSliderService.GetAllFeatureSliderAsync();
             return Ok(values);
         }
+        [HttpGet("FeatureSliderListSatatusTrue")]
+        public async Task<IActionResult> FeatureSliderListSatatusTrue()
+        {
+            var values = await _featureSliderService.GetAllFeatureSliderStatusTrueAsync();
+            return Ok(values);
+        }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetFeatureSliderById(string id)
         {

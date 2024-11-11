@@ -52,6 +52,14 @@ namespace MShop.Catalog.Services.FeatureSlideServices
             List<ResultFeatureSliderDto> result = _mapper.Map<List<ResultFeatureSliderDto>>(featureSliders);
             return result;
         }
+        public async Task<List<ResultFeatureSliderDto>> GetAllFeatureSliderStatusTrueAsync()
+        {
+            List<FeatureSlider> featureSliders = await _featureSliderCollection
+                .Find(x => x.Status == true)
+                .ToListAsync();
+            List<ResultFeatureSliderDto> result = _mapper.Map<List<ResultFeatureSliderDto>>(featureSliders);
+            return result;
+        }
 
         public async Task<GetByIdFeatureSliderDto> GetByIdFeatureSliderAsync(string id)
         {
