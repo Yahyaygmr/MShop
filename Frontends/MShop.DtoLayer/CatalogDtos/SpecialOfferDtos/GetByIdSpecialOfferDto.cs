@@ -1,4 +1,4 @@
-﻿namespace MShop.Catalog.Dtos.SpecialOfferDtos
+﻿namespace MShop.DtoLayer.CatalogDtos.SpecialOfferDtos
 {
     public class GetByIdSpecialOfferDto
     {

@@ -1,6 +1,6 @@
-﻿namespace MShop.Catalog.Dtos.SpecialOfferDtos
+﻿namespace MShop.DtoLayer.CatalogDtos.SpecialOfferDtos
 {
-    public class GetByIdSpecialOfferDto
+    public class UpdateSpecialOfferDto
     {
         public string SpecialOfferId { get; set; }
         public string Title { get; set; }
