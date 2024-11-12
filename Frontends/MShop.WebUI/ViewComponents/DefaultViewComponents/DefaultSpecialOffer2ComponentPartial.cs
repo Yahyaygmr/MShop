@@ -5,11 +5,11 @@ using System.Net.Http;
 
 namespace MShop.WebUI.ViewComponents.DefaultViewComponents
 {
-    public class DefaultSpecialOfferComponentPartial : ViewComponent
+    public class DefaultSpecialOffer2ComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public DefaultSpecialOfferComponentPartial(IHttpClientFactory httpClientFactory)
+        public DefaultSpecialOffer2ComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -22,7 +22,7 @@ namespace MShop.WebUI.ViewComponents.DefaultViewComponents
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultSpecialOfferDto>>(jsonData);
-                return View(values?.Take(2).ToList());
+                return View(values);
             }
             return View();
         }
