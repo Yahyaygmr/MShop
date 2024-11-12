@@ -22,7 +22,7 @@ namespace MShop.WebUI.ViewComponents.DefaultViewComponents
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultSpecialOfferDto>>(jsonData);
-                return View(values);
+                return View(values ?? new List<ResultSpecialOfferDto>());
             }
             return View();
         }
