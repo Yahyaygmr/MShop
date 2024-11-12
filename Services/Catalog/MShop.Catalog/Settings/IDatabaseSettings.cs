@@ -7,6 +7,7 @@
         public string ProducDetailCollectionName { get; set; }
         public string ProducImageCollectionName { get; set; }
         public string FeatureSliderCollectionName { get; set; }
+        public string SpecialOfferCollectionName { get; set; }
         public string DatabaseName { get; set; }
         public string ConnectionString { get; set; }
     }
