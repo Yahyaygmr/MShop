@@ -1,8 +1,36 @@
-﻿
+﻿@model CreateSpecialOfferDto
 @{
     ViewData["Title"] = "CreateSpecialOffer";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
-<h1>CreateSpecialOffer</h1>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Yeni Özel Teklif Oluştur</h4>
 
+            <form class="forms-sample" method="post">
+                <div class="form-group">
+                    <label for="exampleInputName1">Başlık</label>
+                    <input type="text" class="form-control" placeholder="Başlık" asp-for="Title">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Alt Başlık</label>
+                    <input type="text" class="form-control" placeholder="Alt Başlık" asp-for="SubTitle">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Resim Url</label>
+                    <input type="text" class="form-control" placeholder="Resim Url" asp-for="ImageUrl">
+                </div>
+              
+                <div class="form-check form-check-flat form-check-primary">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" asp-for="Status"> Aktif mi?
+                    </label>
+                </div>
+                <button class="btn btn-primary text-white btn-lg me-2">Kaydet</button>
+                <a href="/Admin/SpecialOffer/Index/" class="btn btn-light btn-lg">ListeyeDön</a>
+            </form>
+        </div>
+    </div>
+</div>

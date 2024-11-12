@@ -1,8 +1,56 @@
-﻿
+﻿@model List<ResultSpecialOfferDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
 }
 
-<h1>Index</h1>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Özel Teklifler</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Resim</th>
+                        <th>Başlık</th>
+                        <th>Alt Başlık</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td><img src=" @item.ImageUrl" style="width:50px;height:50px;" /></td>
+                            <td>@item.Title</td>
+                            <td>@item.SubTitle</td>
+                            <td>@item.Status</td>
+                            <td>
+                                <a href="/Admin/SpecialOffer/DeleteSpecialOffer/@item.SpecialOfferId" class="btn btn-danger">Sil</a>
+                                <a href="/Admin/SpecialOffer/UpdateSpecialOffer/@item.SpecialOfferId" class="btn btn-dark text-white">Güncelle</a>
+                                @if (item.Status)
+                                {
+                                    <a href="/Admin/SpecialOffer/ChangeSpecialOfferStatus/@item.SpecialOfferId" class="btn btn-warning text-white">Pasif Yap</a>
+                                }
+                                else
+                                {
+                                    <a href="/Admin/SpecialOffer/ChangeSpecialOfferStatus/@item.SpecialOfferId" class="btn btn-primary text-white">Aktif Yap</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer bg-white">
+        <a href="/Admin/SpecialOffer/CreateSpecialOffer/" class="btn btn-primary btn-lg text-white">+ Yeni Özel Teklif Oluştur</a>
+    </div>
+</div>
 
