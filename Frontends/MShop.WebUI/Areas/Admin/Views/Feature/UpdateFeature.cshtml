@@ -1,0 +1,29 @@
+﻿@model UpdateFeatureDto
+@{
+    ViewData["Title"] = "UpdateFeature";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Yeni Öneçıkan Güncelle</h4>
+            <p class="card-description"> Lütfen oluşturmak istediğiniz öneçıkan alanı bilgilerini giriniz. </p>
+            <form class="forms-sample" method="post">
+                <input type="hidden" asp-for="FeatureId"/>
+                <div class="form-group">
+                    <label for="exampleInputName1">Başlık</label>
+                    <input type="text" class="form-control" placeholder="Başlık" asp-for="Title">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">İkon</label>
+                    <input type="text" class="form-control" placeholder="İkon" asp-for="Icon">
+                </div>
+                <button class="btn btn-primary text-white btn-lg me-2">Güncelle</button>
+                <a href="/Admin/Feature/Index/" class="btn btn-light btn-lg">Öneçıkan Listesine Dön</a>
+            </form>
+        </div>
+    </div>
+</div>
+
