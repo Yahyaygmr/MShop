@@ -1,0 +1,44 @@
+﻿@model List<ResultBrandDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Markalar</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Marka Görsel</th>
+                        <th>Marka Adı</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td><img src="@item.ImageUrl" style="height:50px;width:50px" /></td>
+                            <td>@item.BrandName</td>
+                            <td>
+                                <a href="/Admin/Brand/DeleteBrand/@item.BrandId" class="btn btn-danger">Sil</a>
+                                <a href="/Admin/Brand/UpdateBrand/@item.BrandId" class="btn btn-dark text-white">Güncelle</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer bg-white">
+        <a href="/Admin/Brand/CreateBrand/" class="btn btn-primary btn-lg text-white">+ Yeni Marka Oluştur</a>
+    </div>
+</div>
+
