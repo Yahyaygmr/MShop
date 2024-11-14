@@ -29,6 +29,12 @@ namespace MShop.Catalog.Controllers
             var values = await _productService.GetAllProductsWithCategoryAsync();
             return Ok(values);
         }
+        [HttpGet("ProductListWithCategoryByCategoryId")]
+        public async Task<IActionResult> ProductListWithCategoryByCategoryId(string id)
+        {
+            var values = await _productService.GetAllProductsWithCategoryByCategoryIdAsync(id);
+            return Ok(values);
+        }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductById(string id)
         {

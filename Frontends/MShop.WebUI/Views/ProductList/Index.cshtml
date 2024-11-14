@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/Index.cshtml";
 }
@@ -39,10 +38,9 @@
             <div class="row pb-3">
                 <div class="col-12 pb-1">
                     @await Component.InvokeAsync("ProductListSortingComponentPartial")
-                  
+
                 </div>
-                @await Component.InvokeAsync("ProductListProductsComponentPartial")
-              
+                @await Component.InvokeAsync("ProductListProductsComponentPartial", new { id = ViewBag.categoryId })
                 <!--Pagination Start-->
                 <div class="col-12">
                     <nav>

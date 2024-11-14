@@ -75,6 +75,39 @@ namespace MShop.Catalog.Services.ProductServices
             return result;
         }
 
+        public async Task<List<ResultProductWithCategoryDto>> GetAllProductsWithCategoryByCategoryIdAsync(string categoryId)
+        {
+            List<Product>? products = await _productCollection
+                .Find(x => x.CategoryId == categoryId)
+                .ToListAsync();
+            List<Category>? categories = await _categoryCollection
+                .Find(x => true)
+                .ToListAsync();
+            List<ResultProductWithCategoryDto> result = new();
+            foreach (Product product in products)
+            {
+                foreach (Category category in categories)
+                {
+                    if (product.CategoryId == category.CategoryId)
+                    {
+                        ResultProductWithCategoryDto prd = new()
+                        {
+                            CategoryId = category.CategoryId,
+                            CategoryName = category.CategoryName,
+                            Description = product.Description,
+                            ImageUrl = product.ImageUrl,
+                            Price = product.Price,
+                            ProductId = product.ProductId,
+                            ProductName = product.ProductName,
+                        };
+                        result.Add(prd);
+                    }
+
+                }
+            }
+            return result;
+        }
+
         public async Task<GetByIdProductDto> GetByIdProductAsync(string id)
         {
             Product? product = await _productCollection
