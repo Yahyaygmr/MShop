@@ -9,8 +9,9 @@ namespace MShop.WebUI.Controllers
             ViewBag.categoryId = id;
             return View();
         }
-        public IActionResult Detail()
+        public IActionResult Detail(string id)
         {
+            ViewBag.productId = id;
             return View();
         }
     }
