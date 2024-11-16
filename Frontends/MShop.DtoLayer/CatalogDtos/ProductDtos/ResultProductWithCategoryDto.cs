@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MShop.DtoLayer.CatalogDtos.ProductImageDtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

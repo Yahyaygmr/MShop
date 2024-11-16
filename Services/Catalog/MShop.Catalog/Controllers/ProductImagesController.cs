@@ -6,7 +6,6 @@ using MShop.Catalog.Services.ProductImageServices;
 
 namespace MShop.Catalog.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductImagesController : ControllerBase
@@ -21,6 +20,12 @@ namespace MShop.Catalog.Controllers
         public async Task<IActionResult> ProductImageList()
         {
             var values = await _productImageService.GetAllProductImageAsync();
+            return Ok(values);
+        }
+        [HttpGet("ProductImageListByProductId/{id}")]
+        public async Task<IActionResult> ProductImageListByProductId(string id)
+        {
+            var values = await _productImageService.GetAllProductByProductIdImageAsync(id);
             return Ok(values);
         }
         [HttpGet("{id}")]

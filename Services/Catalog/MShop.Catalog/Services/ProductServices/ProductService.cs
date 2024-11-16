@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MongoDB.Driver;
 using MShop.Catalog.Dtos.ProductDtos;
+using MShop.Catalog.Dtos.ProductImageDtos;
 using MShop.Catalog.Entities;
 using MShop.Catalog.Settings;
 
@@ -11,6 +12,7 @@ namespace MShop.Catalog.Services.ProductServices
         private readonly IMapper _mapper;
         private readonly IMongoCollection<Product> _productCollection;
         private readonly IMongoCollection<Category> _categoryCollection;
+        private readonly IMongoCollection<ProductImage> _productImageCollection;
 
         public ProductService(IMapper mapper, IDatabaseSettings databaseSettings)
         {
@@ -19,6 +21,7 @@ namespace MShop.Catalog.Services.ProductServices
             var database = client.GetDatabase(databaseSettings.DatabaseName);
             _productCollection = database.GetCollection<Product>(databaseSettings.ProducCollectionName);
             _categoryCollection = database.GetCollection<Category>(databaseSettings.CategoryCollectionName);
+            _productImageCollection = database.GetCollection<ProductImage>(databaseSettings.ProducImageCollectionName);
         }
 
         public async Task CreateProductAsync(CreateProductDto createProductDto)
@@ -30,13 +33,13 @@ namespace MShop.Catalog.Services.ProductServices
 
         public async Task DeleteProductAsync(string id)
         {
-            await _productCollection.DeleteOneAsync(x=>x.ProductId == id);
+            await _productCollection.DeleteOneAsync(x => x.ProductId == id);
         }
 
         public async Task<List<ResultProductDto>> GetAllProductAsync()
         {
             List<Product>? products = await _productCollection
-                .Find(x=>true)
+                .Find(x => true)
                 .ToListAsync();
             List<ResultProductDto> result = _mapper.Map<List<ResultProductDto>>(products);
             return result;
@@ -108,10 +111,48 @@ namespace MShop.Catalog.Services.ProductServices
             return result;
         }
 
+        public async Task<List<ResultProductWithImageDto>> GetAllProductsWithImagesAsync()
+        {
+
+            List<Product>? products = await _productCollection
+               .Find(x => true)
+               .ToListAsync();
+            List<ResultProductWithImageDto> resultList = new();
+            foreach (var item in products)
+            {
+                List<ProductImage>? productImages = await _productImageCollection
+              .Find(x => x.ProductId == item.ProductId)
+              .ToListAsync();
+                List<Category>? categories = await _categoryCollection
+               .Find(x => true)
+               .ToListAsync();
+                var resultImages = _mapper.Map<List<ResultProductImageDto>>(productImages);
+                ResultProductWithImageDto result = new()
+                {
+                    ProductId = item.ProductId,
+                    CategoryId = item.CategoryId,
+                    Description = item.Description,
+                    ImageUrl = item.ImageUrl,
+                    Price = item.Price,
+                    ProductName = item.ProductName,
+                    ProductImages = resultImages
+                };
+                foreach (Category category in categories)
+                {
+                    if (item.CategoryId == category.CategoryId)
+                    {
+                        result.CategoryName = category.CategoryName;
+                    }
+                }
+                resultList.Add(result);
+            }
+            return resultList;
+        }
+
         public async Task<GetByIdProductDto> GetByIdProductAsync(string id)
         {
             Product? product = await _productCollection
-                .Find(x=>x.ProductId == id)
+                .Find(x => x.ProductId == id)
                 .FirstOrDefaultAsync();
             GetByIdProductDto result = _mapper.Map<GetByIdProductDto>(product);
             return result;

@@ -5,6 +5,7 @@ namespace MShop.Catalog.Services.ProductImageServices
     public interface IProductImageService
     {
         Task<List<ResultProductImageDto>> GetAllProductImageAsync();
+        Task<List<ResultProductImageDto>> GetAllProductByProductIdImageAsync(string productId);
         Task CreateProductImageAsync(CreateProductImageDto createProductImageDto);
         Task UpdateProductImageAsync(UpdateProductImageDto updateProductImageDto);
         Task DeleteProductImageAsync(string id);

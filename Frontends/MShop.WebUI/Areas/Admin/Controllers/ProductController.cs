@@ -20,11 +20,11 @@ namespace MShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7205/api/Products/ProductListWithCategory");
+            var responseMessage = await client.GetAsync("https://localhost:7205/api/Products/ProductListWithImages");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultProductWithImagesDto>>(jsonData);
                 return View(values);
             }
             return View();

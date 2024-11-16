@@ -6,6 +6,7 @@ namespace MShop.Catalog.Services.ProductServices
     {
         Task<List<ResultProductDto>> GetAllProductAsync();
         Task<List<ResultProductWithCategoryDto>> GetAllProductsWithCategoryAsync();
+        Task<List<ResultProductWithImageDto>> GetAllProductsWithImagesAsync();
         Task<List<ResultProductWithCategoryDto>> GetAllProductsWithCategoryByCategoryIdAsync(string categoryId);
         Task CreateProductAsync(CreateProductDto createProductDto);
         Task UpdateProductAsync(UpdateProductDto updateProductDto);

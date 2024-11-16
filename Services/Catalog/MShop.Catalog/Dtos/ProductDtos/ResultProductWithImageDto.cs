@@ -1,13 +1,17 @@
-﻿namespace MShop.Catalog.Dtos.ProductDtos
+﻿using MShop.Catalog.Dtos.ProductImageDtos;
+
+namespace MShop.Catalog.Dtos.ProductDtos
 {
-    public class ResultProductWithCategoryDto
+    public class ResultProductWithImageDto
     {
         public string ProductId { get; set; }
         public string ProductName { get; set; }
         public decimal Price { get; set; }
         public string ImageUrl { get; set; }
         public string Description { get; set; }
-        public string CategoryName { get; set; }
         public string CategoryId { get; set; }
+        public string CategoryName { get; set; }
+        public List<ResultProductImageDto>? ProductImages { get; set; }
+
     }
 }

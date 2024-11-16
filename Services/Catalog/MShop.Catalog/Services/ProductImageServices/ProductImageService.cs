@@ -31,6 +31,15 @@ namespace MShop.Catalog.Services.ProductImageServices
             await _productImageCollection.DeleteOneAsync(x => x.ProductImageId == id);
         }
 
+        public async Task<List<ResultProductImageDto>> GetAllProductByProductIdImageAsync(string productId)
+        {
+            List<ProductImage>? products = await _productImageCollection
+                .Find(x => x.ProductId == productId)
+                .ToListAsync();
+            List<ResultProductImageDto> result = _mapper.Map<List<ResultProductImageDto>>(products);
+            return result;
+        }
+
         public async Task<List<ResultProductImageDto>> GetAllProductImageAsync()
         {
             List<ProductImage>? products = await _productImageCollection
