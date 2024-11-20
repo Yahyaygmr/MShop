@@ -28,14 +28,12 @@
                             <td>@count</td>
                             <td>
                                 <div class="row">
-                                @foreach (var image in item.ProductImages)
-                                {
-                                    
+                                    @foreach (var image in item.ProductImages)
+                                    {
                                         <div class="col-4 mb-1">
                                             <img src="@image.Image" class="rounded-0" style="max-width:45px;max-height:45px;" />
                                         </div>
-                                    
-                                }
+                                    }
                                 </div>
                             </td>
                             <td>@item.ProductName</td>
