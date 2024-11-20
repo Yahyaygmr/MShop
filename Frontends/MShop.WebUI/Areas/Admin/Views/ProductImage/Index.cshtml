@@ -1,0 +1,47 @@
+﻿@model List<ResultProductImageDto>
+@{
+    ViewData["Title"] = "ProductImageList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    string prodId = ViewBag.productId;
+    int count = 0;
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Ürüne Ait Görseller</h4>
+        <div class="row">
+            <table class="table table-bordered">
+                <tr>
+                    <th>#</th>
+                    <th>Resim</th>
+                    <th>Ürün Id</th>
+                    <th>İşemler</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td>
+                            <div class="product-img position-relative overflow-hidden" style="height: 50px; width:50px;">
+                                <img class="img-fluid w-100 h-100 object-fit-cover" src="@item.Image" alt="">
+                            </div>
+                        </td>
+                        <td>@item.ProductId</td>
+                        <td>
+                            <a href="/Admin/ProductImage/DeleteProductImage/@item.ProductImageId" class="btn btn-danger">Sil</a>
+                            <a href="/Admin/ProductImage/UpdateProductImage/@item.ProductId" class="btn btn-dark text-white">Güncelle</a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+    </div>
+    @*  <div class="card-footer bg-white">
+        <a href="/Admin/Product/Index/" class="btn btn-danger btn-lg">Ürün Listesine Dön</a>
+        <a href="/Admin/ProductImage/CreateProductImage/@prodId" class="btn btn-primary btn-lg text-white">+ Yeni Görsel Ekle</a>
+    </div> *@
+</div>
+
