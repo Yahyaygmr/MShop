@@ -1,5 +1,4 @@
-﻿
-namespace MShop.Catalog.Dtos.ProductDetailDtos
+﻿namespace MShop.DtoLayer.CatalogDtos.ProductDetailDtos
 {
     public class ResultProductDetailDto
     {

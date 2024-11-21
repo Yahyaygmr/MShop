@@ -1,9 +1,7 @@
-﻿
-namespace MShop.Catalog.Dtos.ProductDetailDtos
+﻿namespace MShop.DtoLayer.CatalogDtos.ProductDetailDtos
 {
-    public class ResultProductDetailDto
+    public class CreateProductDetailDto
     {
-        public string ProductDetailId { get; set; }
         public string ProductDescription { get; set; }
         public string ProductInformation { get; set; }
         public string ProductId { get; set; }
