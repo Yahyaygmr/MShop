@@ -1,0 +1,35 @@
+﻿@model UpdateProductDetailDto
+
+@{
+    ViewData["Title"] = "UpdateProductDetail";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Ürün Güncelle</h4>
+            <p class="card-description"> Lütfen güncellemek istediğiniz ürün bilgilerini eksiksik olarak  giriniz </p>
+            <form class="forms-sample" method="post">
+                <input type="hidden" asp-for="ProductId" />
+                <input type="hidden" asp-for="ProductDetailId" />
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Ürün Bilgisi</label>
+                        <textarea class="form-control" asp-for="ProductInformation" cols="5" rows="5" placeholder="Ürün bilgisi..."></textarea>
+                     
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Ürün Detayı</label>
+                        <textarea class="form-control" asp-for="ProductDescription" cols="5" rows="5" placeholder="Ürün detayı..."></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary text-white btn-lg me-2">Güncelle</button>
+                <a href="/Admin/Product/Index/" class="btn btn-light btn-lg">Ürün Listesine Dön</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+

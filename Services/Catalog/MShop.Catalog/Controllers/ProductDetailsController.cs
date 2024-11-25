@@ -6,7 +6,6 @@ using MShop.Catalog.Services.ProductDetailServices;
 
 namespace MShop.Catalog.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductDetailsController : ControllerBase
@@ -27,6 +26,12 @@ namespace MShop.Catalog.Controllers
         public async Task<IActionResult> GetProductDetailById(string id)
         {
             var value = await _productDetailService.GetByIdProductDetailAsync(id);
+            return Ok(value);
+        }
+        [HttpGet("GetProductDetailByProductId/{id}")]
+        public async Task<IActionResult> GetProductDetailByProductId(string id)
+        {
+            var value = await _productDetailService.GetByProductIdProductDetailAsync(id);
             return Ok(value);
         }
         [HttpPost]
