@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.60.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MShop.Cargo.DataAccessLayer\MShop.Cargo.DataAccessLayer.csproj" />
     <ProjectReference Include="..\MShop.Cargo.EntityLayer\MShop.Cargo.EntityLayer.csproj" />
   </ItemGroup>
